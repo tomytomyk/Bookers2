@@ -1,0 +1,39 @@
+<ul class="list-unstyled">
+	<li class="text-center"><h1>User info</h1>
+      <ul class="list-unstyled">
+	    <li><%= attachment_image_tag user, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg" %></li>
+        <h3>
+        <ul class="list-inline">
+            <li>name</li>
+            <li><%= user.name %></li>
+        </ul>
+        </h3>
+        <ul class="list-inline">
+          <li>introduction</li>
+          <li><%= user.profile_body %></li>
+        </ul>
+        <li><% if user.id == current_user.id %>
+          <button class="btn btn-default">
+            <%= link_to "プロフィール編集" , edit_user_path(user) %>
+          </button>
+          <% end %></li>
+      </ul>
+    </li>
+    <li class="text-center">
+      <h1>New Book</h1>
+      <ul class="list-unstyled"><%= form_for(book) do |f| %>
+        <li><% if book.errors.any? %>
+        <%= book.errors.count %>件のエラーが発生しました
+        <% book.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %></li>
+        <% end %>
+        <h3>title</h3>
+        <li><%= f.text_field :title,class: "book_title" %></li>
+        <h3>body</h3>
+        <li><%= f.text_area :body,class: "book_body" %></li>
+        <li><%= f.submit %></li>
+      </ul>
+    </li>
+</ul>
+<% end %>

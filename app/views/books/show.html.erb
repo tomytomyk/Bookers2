@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+<%= render 'books/list', book: @books, user:@users %>
+</div>
+<div class="col-lg-9">
+<% if flash[:notice] %>
+ <%= flash[:notice] %>
+ <% end %>
+<h1>詳細</h1>
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  	  <th>Image</th>
+  	  <th>Title</th>
+  	  <th>Body</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
+
+<% if @book.user == current_user %>
+      <td><%= link_to "Edit", edit_book_path(@book.id), class: "edit_book_#{@book.id}" %></td>
+      <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure？",  class: "destroy_book_#{@book.id}" %></td>
+<% end %>
+</tr>
+</tbody>
+</table>
+<button class="btn btn-default">
+<%= link_to "Back", books_path, class: "back" %>
+</button>
+</div>
+</div>
+</div>

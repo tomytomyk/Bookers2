@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <div class="container-fluid">
+    <div class="row" style="background-color: black;">
+    <div class="col-lg-4">
+    <h1 style="color: white;">Bookers</h1>
+    </div>
+    <div class="col-lg-8">
+      <div class="text-right">
+    <ul class="list-inline">
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to "ホーム", user_path(current_user.id), class: "home" %>
+    </li>
+    <li>
+      <%= link_to "ユーザー一覧", users_path, class: "users" %>
+    </li>
+    <li>
+      <%= link_to "ブック一覧", books_path, class: "books" %>
+    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+    </li>
+    <% else %>
+    <li>
+      <%= link_to "トップページ", root_path, class: "home" %>
+    </li>
+    <li>
+      <%= link_to "新規登録", new_user_registration_path, class: "sign_up" %>
+    </li>
+    <li>
+      <%= link_to "アバウト", root_show_path, class: "about" %>
+    <li>
+      <%= link_to "ログイン", user_session_path, class: "sign_in" %>
+    </li>
+    <% end %>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </header>
+      <%= yield %>
+  </body>
+</html>
