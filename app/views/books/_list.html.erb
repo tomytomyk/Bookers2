@@ -14,7 +14,7 @@
         </ul>
         <li><% if user.id == current_user.id %>
           <button class="btn btn-default">
-            <%= link_to "プロフィール編集" , edit_user_path(user) %>
+            <%= link_to "プロフィール編集" , edit_user_path(user), class: "edit_user_#{user.id}" %>
           </button>
           <% end %></li>
       </ul>
@@ -33,7 +33,7 @@
         <h3>body</h3>
         <li><%= f.text_area :body,class: "book_body" %></li>
         <li><%= f.submit %></li>
+        <% end %>
       </ul>
     </li>
 </ul>
-<% end %>

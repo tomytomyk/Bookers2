@@ -1,5 +1,8 @@
 <div class="container">
 	<div class="text-center">
+<% if flash[:notice] %>
+ <%= flash[:notice] %>
+ <% end %>
 <h1>Welcome to Bookers</h1>
 <button class="btn btn-success">
 <%= link_to "新規登録", new_user_registration_path, class: "sign_up" %>

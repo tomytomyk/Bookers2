@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   		user_path(current_user)
 	end
 
+  def after_sign_out_path_for(resource)
+      root_path
+  end
+
 	def ensure_correct_user
     if @current_user.id != params[:id].to_i
     flash[:notice] = "権限がありません"

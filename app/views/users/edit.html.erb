@@ -1,19 +1,17 @@
 <div class="container">
-<div class="text-center">
-	<% if @user.errors.any? %>
-    <%= @user.errors.count %>件のエラーが発生しました
-      <% @user.errors.full_messages.each do |message| %>
-      <%= message %>
+	  <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
       <% end %>
-<% end %>
     <%= form_for(@user) do |f| %>
-<p>名前</p>
-<%= f.text_field :name, class: "name" %>
-<p>プロフィール画像</p>
-<%= f.attachment_field :profile_image, class: "user_image" %>
-<p>自己紹介文</p>
-<%= f.text_field :profile_body, class: "introduction" %>
-<%= f.submit %>
-<% end %>
-</div>
+      <p>名前</p>
+        <%= f.text_field :name, class: "name" %>
+      <p>プロフィール画像</p>
+      <%= f.attachment_field :profile_image, class: "user_image" %>
+      <p>自己紹介文</p>
+      <%= f.text_field :profile_body, class: "introduction" %>
+      <%= f.submit %>
+    <% end %>
 </div>
