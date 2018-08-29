@@ -9,7 +9,6 @@ class User < ApplicationRecord
    attachment :profile_image
 
    validates :name, length: { in: 2..20 }
-   validates :name, uniqueness: true
    validates :profile_body, length: { maximum: 50 }
 
 end
